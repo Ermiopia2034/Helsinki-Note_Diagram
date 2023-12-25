@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server-->>browser: HTTP status code 302>> this means a URL redirect, meaning the server is asking the browser to do a new HTTP request. so the browser then requests HTTP as follows..
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "my new text", "date": "2023-12-25T09:13:14.128Z" }, ... ]
+    deactivate server
