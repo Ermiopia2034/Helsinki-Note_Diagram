@@ -1,0 +1,38 @@
+sequenceDiagram
+    participant browser
+    participant server
+	
+	browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+	activate server
+	server-->>browser: HTML Document
+	Deactivate server
+
+	browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css 
+	activated server
+	server-->>browser: CSS file/main.css
+	Deactivate server
+
+	browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+	activated server
+	server-->>browser: Javascript file/spa.js
+	Deactivate server
+
+	browser-->>server: GET chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js
+	activated server
+	server-->>browser: Javascrip file containing location
+	Deactivate server
+
+	browser-->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+	activate server
+	server-->>browser: fetched the data from the json file/data.json
+	Deactivate server
+
+	browser-->>server: GET chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js
+	activate server
+	server-->>browser: extend-native-history-api.js
+	Deactivate server
+
+	browser-->>server: GET chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/fonts/CircularXXWeb-Book.woff2
+	activate server
+	server-->>browser: circularXXweb-book.woff2
+	Deactivat server
